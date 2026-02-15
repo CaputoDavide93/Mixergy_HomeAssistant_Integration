@@ -1,0 +1,125 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connect to Mixergy",
+        "description": "Enter your Mixergy account credentials and tank serial number.",
+        "data": {
+          "username": "Username",
+          "password": "Password",
+          "serial_number": "Tank Serial Number"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Re-authenticate Mixergy",
+        "description": "Your Mixergy credentials are no longer valid. Please enter updated credentials for tank {serial_number}.",
+        "data": {
+          "username": "Username",
+          "password": "Password"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Unable to connect to the Mixergy API. Please check your internet connection.",
+      "invalid_auth": "Invalid username or password.",
+      "tank_not_found": "No tank found with the specified serial number.",
+      "unknown": "An unexpected error occurred. Please try again."
+    },
+    "abort": {
+      "already_configured": "This tank is already configured.",
+      "reauth_successful": "Re-authentication successful."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "hot_water_temperature": { "name": "Hot water temperature" },
+      "coldest_water_temperature": { "name": "Coldest water temperature" },
+      "target_temperature": { "name": "Target temperature" },
+      "cleansing_temperature": { "name": "Cleansing temperature" },
+      "charge": { "name": "Current charge" },
+      "target_charge": { "name": "Target charge" },
+      "electric_power": { "name": "Electric heat power" },
+      "pv_power": { "name": "PV power" },
+      "clamp_power": { "name": "Clamp power" },
+      "active_heat_source": {
+        "name": "Active heat source",
+        "state": {
+          "electric": "Electric",
+          "indirect": "Indirect (gas/oil)",
+          "heatpump": "Heat pump",
+          "none": "None"
+        }
+      },
+      "default_heat_source": {
+        "name": "Default heat source",
+        "state": {
+          "electric": "Electric",
+          "indirect": "Indirect (gas/oil)",
+          "heat_pump": "Heat pump"
+        }
+      },
+      "holiday_start": { "name": "Holiday start date" },
+      "holiday_end": { "name": "Holiday end date" },
+      "firmware_version": { "name": "Firmware version" },
+      "model": { "name": "Model" }
+    },
+    "binary_sensor": {
+      "electric_heat": { "name": "Electric heat active" },
+      "indirect_heat": { "name": "Indirect heat active" },
+      "heatpump_heat": { "name": "Heat pump active" },
+      "is_heating": { "name": "Heating" },
+      "low_hot_water": { "name": "Low hot water" },
+      "no_hot_water": { "name": "No hot water" },
+      "holiday_mode": { "name": "Holiday mode" }
+    },
+    "switch": {
+      "dsr_enabled": { "name": "Grid assistance (DSR)" },
+      "frost_protection": { "name": "Frost protection" },
+      "distributed_computing": { "name": "Medical research donation" },
+      "pv_divert": { "name": "PV export divert" }
+    },
+    "number": {
+      "target_temperature_control": { "name": "Target temperature" },
+      "target_charge_control": { "name": "Target charge" },
+      "cleansing_temperature_control": { "name": "Cleansing temperature" },
+      "pv_cut_in_threshold": { "name": "PV cut-in threshold" },
+      "pv_charge_limit": { "name": "PV charge limit" },
+      "pv_target_current": { "name": "PV target current" },
+      "pv_over_temperature": { "name": "PV over-temperature limit" }
+    },
+    "select": {
+      "default_heat_source_select": {
+        "name": "Default heat source",
+        "state": {
+          "electric": "Electric",
+          "indirect": "Indirect (gas/oil)",
+          "heat_pump": "Heat pump"
+        }
+      }
+    },
+    "button": {
+      "clear_holiday": { "name": "Clear holiday dates" }
+    }
+  },
+  "exceptions": {
+    "auth_failed": {
+      "message": "Mixergy authentication failed. Please re-enter your credentials."
+    }
+  },
+  "services": {
+    "set_holiday_dates": {
+      "name": "Set holiday dates",
+      "description": "Set the holiday start and end dates for the Mixergy tank.",
+      "fields": {
+        "start_date": {
+          "name": "Start date",
+          "description": "The departure date and time for holiday mode."
+        },
+        "end_date": {
+          "name": "End date",
+          "description": "The return date and time from holiday mode."
+        }
+      }
+    }
+  }
+}
